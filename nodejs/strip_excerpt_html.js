@@ -19,7 +19,7 @@ var sqlFileName = "output.sql";
 
 function stripHtml(s) {
 	var rexSpaces = /\&nbsp\;/g;
-	s = s.replace( rexSpaces, "");
+	s = s.replace( rexSpaces, " ");
 
 	var rex = /&lt;[a-zA-Z\s\"\'\=0-9\/\-\:\;\#]+&gt;/g;
 	s = s.replace( rex, "" );
@@ -41,6 +41,9 @@ function sqlString(s) {
 // proceed
 var sql = "";
 csv.fromPath(csvFileName).on( "data", function(data) {
+	if( data.length < 2 ) {
+		return;
+	}
 	var strippedHtml = stripHtml(data[1]);
 	var strippedHtml = stripSpaces(strippedHtml);
 	var sqlExcerpt = sqlString(strippedHtml);
