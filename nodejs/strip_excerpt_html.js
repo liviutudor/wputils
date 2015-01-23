@@ -21,7 +21,7 @@ function stripHtml(s) {
 	var rexSpaces = /\&nbsp\;/g;
 	s = s.replace( rexSpaces, "");
 
-	var rex = /&lt;[a-zA-Z\s\"\'\=0-9\/]+&gt;/g;
+	var rex = /&lt;[a-zA-Z\s\"\'\=0-9\/\-\:\;\#]+&gt;/g;
 	s = s.replace( rex, "" );
 	return s;
 }
